@@ -17,12 +17,12 @@ namespace DemoFunctionApp.Functions
             var outputs = new List<string>();
 
             // Replace name and input with values relevant for your Durable Functions Activity
-            var argentinaTask = context.CallActivityAsync<string>(nameof(FoFiSayHelloActivity), "Argentina");
-            var peruTask = context.CallActivityAsync<string>(nameof(FoFiSayHelloActivity), "Peru");
-            var mexicoTask = context.CallActivityAsync<string>(nameof(FoFiSayHelloActivity), "Mexico");
+            var countryOneTask = context.CallActivityAsync<string>(nameof(FoFiSayHelloActivity), "España");
+            var countryTwoTask = context.CallActivityAsync<string>(nameof(FoFiSayHelloActivity), "Italia");
+            var countryThreeTask = context.CallActivityAsync<string>(nameof(FoFiSayHelloActivity), "Francia");
 
             // Esperar a que todas las tareas se completen
-            var results = await Task.WhenAll(argentinaTask, peruTask, mexicoTask);
+            var results = await Task.WhenAll(countryOneTask, countryTwoTask, countryThreeTask);
 
             // Agregar los resultados a la lista outputs
             outputs.AddRange(results);
