@@ -51,7 +51,7 @@ namespace DemoFunctionApp.Functions
         [Function($"{nameof(FoFiDurableFunctions)}_Start")]
         public static async Task<HttpResponseData> FoFiHttpStart(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req,
-            [DurableClient] DurableTaskClient client,
+            [DurableClient(TaskHub = "DurableFunctionsHub")] DurableTaskClient client,
             FunctionContext executionContext)
         {
             ILogger logger = executionContext.GetLogger($"{nameof(FoFiDurableFunctions)}_Start");

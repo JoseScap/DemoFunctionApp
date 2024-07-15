@@ -46,7 +46,7 @@ namespace DemoFunctionApp.Functions
         [Function($"{nameof(HelloWorldDurableFunctions)}_Start")]
         public static async Task<HttpResponseData> HttpStart(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req,
-            [DurableClient] DurableTaskClient client,
+            [DurableClient(TaskHub = "DurableFunctionsHub")] DurableTaskClient client,
             FunctionContext executionContext)
         {
             ILogger logger = executionContext.GetLogger($"{nameof(HelloWorldDurableFunctions)}_Start");
